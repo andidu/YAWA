@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalAnimationApi::class)
 
-package com.adorastudios.yawa
+package com.adorastudios.yawa.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
