@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">YAWA</string>
     <string name="app_description">Yet another weather app</string>
+
+    <string name="humidity">Humidity</string>
 </resources>
