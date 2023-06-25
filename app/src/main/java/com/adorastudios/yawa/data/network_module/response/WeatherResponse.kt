@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class WeatherResponse(
+    @SerialName("timezone_offset")
+    val timeOffset: Int,
+
     @SerialName("current")
     val current: WeatherNowResponse,
 

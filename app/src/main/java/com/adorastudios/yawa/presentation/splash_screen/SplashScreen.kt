@@ -22,6 +22,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import com.adorastudios.yawa.R
+import com.adorastudios.yawa.presentation.MainState
+import com.adorastudios.yawa.presentation.MainViewModel
 import com.adorastudios.yawa.presentation.utils.Screen
 import kotlinx.coroutines.delay
 import java.util.Calendar
@@ -29,6 +31,7 @@ import java.util.Calendar
 @Composable
 fun SplashScreen(
     navController: NavController,
+    viewModel: MainViewModel,
 ) {
     val rotation = remember {
         Animatable(0f)
@@ -41,13 +44,17 @@ fun SplashScreen(
     }
 
     LaunchedEffect(key1 = true) {
-        delay(500)
-        rotation.animateTo(
-            targetValue = 90f,
-            animationSpec = tween(
-                durationMillis = 1500,
-            ),
-        )
+        var targetValue = 90f
+        while (viewModel.state.value is MainState.Loading) {
+            delay(500)
+            rotation.animateTo(
+                targetValue = targetValue,
+                animationSpec = tween(
+                    durationMillis = 1500,
+                ),
+            )
+            targetValue += 90f
+        }
         delay(500)
         navController.navigate(Screen.toMainScreen())
     }
@@ -75,7 +82,7 @@ fun SplashScreen(
                             rotationZ = rotation.value
                         }
                         .scale(1.5f),
-                    painter = painterResource(id = R.drawable.sun),
+                    painter = painterResource(id = R.drawable.icon_01d),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
                 )
@@ -86,7 +93,7 @@ fun SplashScreen(
                             rotationZ = -rotation.value
                         }
                         .scale(1.5f),
-                    painter = painterResource(id = R.drawable.moon),
+                    painter = painterResource(id = R.drawable.icon_01n),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
                 )

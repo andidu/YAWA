@@ -17,12 +17,6 @@ data class WeatherDailyResponse(
     @SerialName("weather")
     val weatherDescription: List<DescriptionResponse>,
 
-    @SerialName("sunrise")
-    val sunrise: Long,
-
-    @SerialName("sunset")
-    val sunset: Long,
-
     @SerialName("uvi")
     val uvi: Double,
 )

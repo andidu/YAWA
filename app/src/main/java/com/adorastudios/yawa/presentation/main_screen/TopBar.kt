@@ -34,11 +34,10 @@ fun TopBar(
 
             val weatherIcon = placeables[0]
             val weatherText = placeables[1]
-            val humidityIcon = placeables[2]
-            val humidityText = placeables[3]
-            val timeIcon = placeables[4]
-            val timeText = placeables[5]
-            val location = placeables[6]
+            val humidityText = placeables[2]
+            val timeIcon = placeables[3]
+            val timeText = placeables[4]
+            val location = placeables[5]
 
             location.placeRelative(
                 x = verticalCenterGuideline - location.width / 2,
@@ -58,7 +57,7 @@ fun TopBar(
                 y = horizontalGuideline - weatherIcon.height / 2,
             )
 
-            val shiftY = (weatherText.height - humidityIcon.height - timeIcon.height) / 2
+            val shiftY = (weatherText.height - humidityText.height - timeIcon.height) / 2
 
             weatherText.placeRelative(
                 x = lerp(
@@ -72,23 +71,10 @@ fun TopBar(
                     fraction = progress,
                 ),
             )
-
-            humidityIcon.placeRelative(
+            humidityText.placeRelative(
                 x = lerp(
                     start = leftCollapsedCenter - weatherText.width / 2,
                     stop = verticalLeftGuideline - weatherText.width / 2,
-                    fraction = progress,
-                ),
-                y = lerp(
-                    start = horizontalGuideline + weatherText.height / 2,
-                    stop = horizontalGuideline + shiftY,
-                    fraction = progress,
-                ),
-            )
-            humidityText.placeRelative(
-                x = lerp(
-                    start = leftCollapsedCenter - weatherText.width / 2 + humidityIcon.width,
-                    stop = verticalLeftGuideline - weatherText.width / 2 + humidityIcon.width,
                     fraction = progress,
                 ),
                 y = lerp(
@@ -104,20 +90,20 @@ fun TopBar(
                     fraction = progress,
                 ),
                 y = lerp(
-                    start = horizontalGuideline + weatherText.height / 2 + humidityIcon.height,
-                    stop = horizontalGuideline + humidityIcon.height + shiftY,
+                    start = horizontalGuideline + weatherText.height / 2 + humidityText.height,
+                    stop = horizontalGuideline + humidityText.height + shiftY,
                     fraction = progress,
                 ),
             )
             timeText.placeRelative(
                 x = lerp(
-                    start = leftCollapsedCenter - weatherText.width / 2 + humidityIcon.width,
+                    start = leftCollapsedCenter - weatherText.width / 2 + timeIcon.width,
                     stop = verticalLeftGuideline - weatherText.width / 2 + timeIcon.width,
                     fraction = progress,
                 ),
                 y = lerp(
-                    start = horizontalGuideline + weatherText.height / 2 + humidityIcon.height,
-                    stop = horizontalGuideline + humidityIcon.height + shiftY,
+                    start = horizontalGuideline + weatherText.height / 2 + humidityText.height,
+                    stop = horizontalGuideline + humidityText.height + shiftY,
                     fraction = progress,
                 ),
             )
