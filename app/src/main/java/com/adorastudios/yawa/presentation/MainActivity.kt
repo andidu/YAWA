@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.adorastudios.yawa.presentation.location_screen.LocationScreen
 import com.adorastudios.yawa.presentation.main_screen.MainScreen
 import com.adorastudios.yawa.presentation.splash_screen.SplashScreen
 import com.adorastudios.yawa.presentation.utils.Screen
@@ -70,6 +71,20 @@ class MainActivity: ComponentActivity() {
                             },
                         ) {
                             MainScreen(
+                                navController = navController,
+                                viewModel = viewModel,
+                            )
+                        }
+                        composable(
+                            route = Screen.Location.route,
+                            enterTransition = {
+                                fadeIn(animationSpec = tween(300))
+                            },
+                            exitTransition = {
+                                fadeOut(animationSpec = tween(300))
+                            },
+                        ) {
+                            LocationScreen(
                                 navController = navController,
                                 viewModel = viewModel,
                             )

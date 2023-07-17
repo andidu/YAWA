@@ -2,6 +2,7 @@ package com.adorastudios.yawa
 
 import android.app.Application
 import android.content.Context
+import android.location.Geocoder
 import com.adorastudios.yawa.data.network_module.preferences.LocationPreferences
 import com.adorastudios.yawa.data.network_module.repository.WeatherRepository
 import com.adorastudios.yawa.data.network_module.repository.WeatherRepositoryImpl
@@ -58,5 +59,11 @@ class AppModule {
                 .build()
                 .create(WeatherApi::class.java),
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideGeocoder(app: Application): Geocoder {
+        return Geocoder(app)
     }
 }

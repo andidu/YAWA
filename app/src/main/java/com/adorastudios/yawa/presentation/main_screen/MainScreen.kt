@@ -3,7 +3,6 @@ package com.adorastudios.yawa.presentation.main_screen
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,6 +42,8 @@ import com.adorastudios.yawa.presentation.MainViewModel
 import com.adorastudios.yawa.presentation.main_screen.components.DailyWeather
 import com.adorastudios.yawa.presentation.main_screen.components.HourlyWeather
 import com.adorastudios.yawa.presentation.main_screen.components.TodayWeather
+import com.adorastudios.yawa.presentation.utils.Screen
+import com.adorastudios.yawa.presentation.utils.theme.backgroundColor
 import java.lang.Float.min
 import kotlin.math.max
 
@@ -70,13 +71,7 @@ fun MainScreen(
                     Column(
                         modifier = Modifier
                             .verticalScroll(scrollState)
-                            .background(
-                                if (isSystemInDarkTheme()) {
-                                    Color.Black.copy(alpha = 0.5f)
-                                } else {
-                                    Color.Transparent
-                                },
-                            )
+                            .background(backgroundColor())
                             .padding(top = MaxTopBarHeight),
                     ) {
                         TodayWeather(
@@ -169,6 +164,7 @@ fun MainScreen(
                                     .clip(CircleShape)
                                     .background(MaterialTheme.colorScheme.primaryContainer)
                                     .clickable {
+                                        navController.navigate(Screen.toLocationScreen())
                                     }
                                     .padding(horizontal = 8.dp, vertical = 4.dp),
                                 verticalAlignment = Alignment.CenterVertically,

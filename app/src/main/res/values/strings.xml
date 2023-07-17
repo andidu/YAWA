@@ -18,4 +18,10 @@
     <string name="sunset">Sunset</string>
     <string name="wind_speed">Wind speed</string>
     <string name="wind_direction">Wind direction</string>
+
+    <string name="back">Back</string>
+    <string name="currently_selected_location">Currently selected:</string>
+    <string name="selected">Selected</string>
+    <string name="select">Select</string>
+    <string name="unable_to_load_location">Unable to find requested location. Please, check spelling or try using different words</string>
 </resources>
