@@ -24,4 +24,12 @@
     <string name="selected">Selected</string>
     <string name="select">Select</string>
     <string name="unable_to_load_location">Unable to find requested location. Please, check spelling or try using different words</string>
+    <string name="unable_to_find_location">Unable to load current location</string>
+    <string name="use_current_location">Always use current location</string>
+    <string name="change_location">CHANGE LOCATION</string>
+    <string name="unknown_location">Your location</string>
+    <string name="unknown_location_full">Your location</string>
+    <string name="unable_to_access_current_location">Unable to access current location</string>
+    <string name="current_location">Current location</string>
+    <string name="location">Location</string>
 </resources>

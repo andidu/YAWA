@@ -20,7 +20,7 @@ class LocationPreferences(
     fun setUseCurrentLocation(useCurrentLocation: Boolean) {
         sharedPreferences
             .edit()
-            .putBoolean(CURRENT_LOCATION_STRING, true)
+            .putBoolean(CURRENT_LOCATION_STRING, useCurrentLocation)
             .apply()
     }
 
@@ -47,6 +47,16 @@ class LocationPreferences(
             .putString(LOCATION_NAME_STRING, name)
             .putFloat(LATITUDE_STRING, latitude)
             .putFloat(LONGITUDE_STRING, longitude)
+            .apply()
+    }
+
+    fun setDefaultLocation() {
+        sharedPreferences
+            .edit()
+            .remove(FULL_LOCATION_NAME_STRING)
+            .remove(LOCATION_NAME_STRING)
+            .remove(LATITUDE_STRING)
+            .remove(LONGITUDE_STRING)
             .apply()
     }
 }

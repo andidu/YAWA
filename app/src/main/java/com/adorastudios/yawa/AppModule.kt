@@ -3,6 +3,8 @@ package com.adorastudios.yawa
 import android.app.Application
 import android.content.Context
 import android.location.Geocoder
+import android.location.LocationManager
+import androidx.core.content.ContextCompat.getSystemService
 import com.adorastudios.yawa.data.network_module.preferences.LocationPreferences
 import com.adorastudios.yawa.data.network_module.repository.WeatherRepository
 import com.adorastudios.yawa.data.network_module.repository.WeatherRepositoryImpl
@@ -10,6 +12,7 @@ import com.adorastudios.yawa.data.network_module.retrofit.AdditionalParamInterce
 import com.adorastudios.yawa.data.network_module.retrofit.ApiKeyInterceptor
 import com.adorastudios.yawa.data.network_module.retrofit.LocationInterceptor
 import com.adorastudios.yawa.data.network_module.retrofit.WeatherApi
+import com.adorastudios.yawa.presentation.utils.StringHelper
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -65,5 +68,17 @@ class AppModule {
     @Singleton
     fun provideGeocoder(app: Application): Geocoder {
         return Geocoder(app)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocationManager(app: Application): LocationManager {
+        return getSystemService(app, LocationManager::class.java) as LocationManager
+    }
+
+    @Provides
+    @Singleton
+    fun provideStringHelper(app: Application): StringHelper {
+        return StringHelper(app)
     }
 }

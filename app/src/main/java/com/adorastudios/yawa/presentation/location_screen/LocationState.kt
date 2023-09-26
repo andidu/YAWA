@@ -8,11 +8,15 @@ data class LocationState(
     val currentLat: Float? = null,
     val places: Places = Places.Nothing,
     val selected: Int = -1,
+    val useCurrentLocation: Boolean = false,
 )
 
 sealed class Places {
     object Loading: Places()
     object Nothing: Places()
-    object Error: Places()
+    sealed class Error: Places() {
+        object UnableToFindCurrent: Error()
+        object UnableToParseString: Error()
+    }
     data class Loaded(val list: List<Address>): Places()
 }

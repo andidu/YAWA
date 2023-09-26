@@ -213,6 +213,14 @@ fun MainScreen(
                             text = stringResource(id = R.string.try_again),
                         )
                     }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Button(onClick = { navController.navigate(Screen.toLocationScreen()) }) {
+                        Text(
+                            text = stringResource(id = R.string.change_location),
+                        )
+                    }
                 }
             }
 
